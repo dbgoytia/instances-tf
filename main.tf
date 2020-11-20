@@ -44,19 +44,13 @@ resource "aws_instance" "webserver" {
   # Attach the subnet created in the networking module
   subnet_id = var.subnet_id
 
-  # Enable EPEL repository
-  connection {
-    type = "ssh"
-    user        = "ec2-user"
-    host = self.private_ip
-  } 
 
-  provisioner "remote-exec" {
-    inline = [
-      "sudo yum update -y",
-      "sudo amazon-linux-extras install epel -y",
-    ]
-  }
+  user_data = << EOF
+		#! /bin/bash
+        echo test >> test.txt
+        sudo yum update -y
+		sudo amazon-linux-extras install epel -y
+	EOF
   
   tags = {
     Lab = join("_" , ["webserver_node_", count.index + 1])
