@@ -8,6 +8,10 @@ variable "key_pair_name" {
    type        = string
 }
 
+variable "servers-count" {
+    description = "The number of servers to be created."
+    type = number
+}
 
 variable "instance-type" {
   description = "Instance type to be used for our webserver"
