@@ -45,6 +45,12 @@ resource "aws_instance" "webserver" {
   subnet_id = var.subnet_id
 
   # Enable EPEL repository
+  connection {
+    type = "ssh"
+    user        = "ec2-user"
+    host = self.private_ip
+  } 
+
   provisioner "remote-exec" {
     inline = [
       "sudo yum update -y",
