@@ -1,8 +1,8 @@
 # Output the public IP's of the worker nodes
-output "NODES_PUBLIC_IP" {
+output "NODES_IDS" {
     value = {
         for instance in aws_instance.webserver:
-            instance.id => instance.public_ip
+            instance.id => instance.id
     }
 }
 
