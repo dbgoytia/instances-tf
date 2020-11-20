@@ -15,7 +15,7 @@ data "aws_secretsmanager_secret" "secrets" {
 }
 
 # Read AWS secret id
-data "aws_secretsmanager_secret_version" "current" {
+data "aws_secretsmanager_secret_version" "" {
   secret_id = data.aws_secretsmanager_secret.secrets.id
 }
 
@@ -30,8 +30,8 @@ resource "aws_instance" "webserver" {
   # Instance type to be deployed
   instance_type = var.instance-type
 
-  # Attach keypair to login to the instance    
-  key_name = local.dgoytia-ssh-key-2
+  # Attach keypair to login to the instance    s
+  key_name = data.aws_secretsmanager_secret_version.current.secret_string
 
 
   # Attach security group
