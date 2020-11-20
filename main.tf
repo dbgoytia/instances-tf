@@ -11,7 +11,7 @@ data "aws_ssm_parameter" "amazon_linux_ami" {
 
 # Retrieve aws secret object
 data "aws_secretsmanager_secret" "secrets" {
-  arn = "arn:aws:secretsmanager:us-east-1:779136181681:secret:dgoytia-ssh-key-fct1oj"
+  arn = var.ssh-key-arn
 }
 
 # Read AWS secret id

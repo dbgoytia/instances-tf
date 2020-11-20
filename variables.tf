@@ -23,3 +23,8 @@ variable "vpc_id" {
   description = "VPC id used to install the security group"
   type = string
 }
+
+variable "ssh-key-arn" {
+    description = "ARN for the ssh-key pair"
+    type = string
+}
