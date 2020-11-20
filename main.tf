@@ -50,7 +50,6 @@ c#! /bin/bash
 echo test >> test.txt
 sudo yum update -y
 sudo amazon-linux-extras install epel -y
-sudo yum instal -y iperf
 EOF
   
   tags = {
