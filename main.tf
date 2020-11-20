@@ -3,10 +3,20 @@ data "aws_ssm_parameter" "amazon_linux_ami" {
   name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
-# Create a key-pair for loggin into our instance
-resource "aws_key_pair" "webserver-key" {
-  key_name   = var.key_pair_name
-  public_key = file(var.key_pair_path)
+# # Create a key-pair for loggin into our instance
+# resource "aws_key_pair" "webserver-key" {
+#   key_name   = var.key_pair_name
+#   public_key = file(var.key_pair_path)
+# }
+
+# Retrieve aws secret object
+data "aws_secretsmanager_secret" "secrets" {
+  arn = "arn:aws:secretsmanager:us-east-1:779136181681:secret:dgoytia-ssh-key-fct1oj"
+}
+
+# Read AWS secret id
+data "aws_secretsmanager_secret_version" "current" {
+  secret_id = data.aws_secretsmanager_secret.secrets.id
 }
 
 # Create the instance
