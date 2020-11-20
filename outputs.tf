@@ -5,7 +5,3 @@ output "NODES_PUBLIC_IPS" {
             instance.id => instance.public_ip
     }
 }
-
-# output "INSTANCE_ID" {
-#   value = aws_instance.webserver.id
-# }
