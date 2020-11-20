@@ -3,12 +3,6 @@ data "aws_ssm_parameter" "amazon_linux_ami" {
   name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
-# # Create a key-pair for loggin into our instance
-# resource "aws_key_pair" "webserver-key" {
-#   key_name   = var.key_pair_name
-#   public_key = file(var.key_pair_path)
-# }
-
 # Retrieve aws secret object
 data "aws_secretsmanager_secret" "secrets" {
   arn = var.ssh-key-arn
@@ -17,6 +11,12 @@ data "aws_secretsmanager_secret" "secrets" {
 # Read AWS secret id
 data "aws_secretsmanager_secret_version" "current" {
   secret_id = data.aws_secretsmanager_secret.secrets.id
+}
+
+# Create a key-pair for loggin into our instance
+resource "aws_key_pair" "webserver-key" {
+  key_name   = var.key_pair_name
+  public_key = data.aws_secretsmanager_secret_version.current.secret_string
 }
 
 # Create the instance
@@ -30,8 +30,8 @@ resource "aws_instance" "webserver" {
   # Instance type to be deployed
   instance_type = var.instance-type
 
-  # Attach keypair to login to the instance    s
-  key_name = data.aws_secretsmanager_secret_version.current.secret_string
+  # Attach keypair to login to the instances
+  key_name = aws_key_pair.webserver-key.key_name
 
 
   # Attach security group
