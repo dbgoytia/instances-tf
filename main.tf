@@ -15,7 +15,7 @@ data "aws_secretsmanager_secret" "secrets" {
 }
 
 # Read AWS secret id
-data "aws_secretsmanager_secret_version" "" {
+data "aws_secretsmanager_secret_version" "current" {
   secret_id = data.aws_secretsmanager_secret.secrets.id
 }
 
