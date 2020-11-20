@@ -45,6 +45,6 @@ resource "aws_instance" "webserver" {
   subnet_id = var.subnet_id
   
   tags = {
-    Lab = "EBS migration lab"
+    Lab = join("_" , ["webserver_node_", count.index + 1])
   }
 }
