@@ -30,8 +30,9 @@ resource "aws_instance" "webserver" {
   # Instance type to be deployed
   instance_type = var.instance-type
 
-  # Attach keypair to login to the instance
-  key_name = aws_key_pair.webserver-key.key_name
+  # Attach keypair to login to the instance    
+  key_name = local.dgoytia-ssh-key-2
+
 
   # Attach security group
   vpc_security_group_ids = [aws_security_group.allow_webserver.id]
