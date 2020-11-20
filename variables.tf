@@ -1,12 +1,12 @@
-variable "key_pair_path" {
-  description = "Path to the key-pair used for logging into the instance"
-  type        = string
-}
+# variable "key_pair_path" {
+#   description = "Path to the key-pair used for logging into the instance"
+#   type        = string
+# }
 
-variable "key_pair_name" {
-  description = "Name to attach to the key_pair used for login."
-  type        = string
-}
+# variable "key_pair_name" {
+#   description = "Name to attach to the key_pair used for login."
+#   type        = string
+# }
 
 
 variable "instance-type" {
