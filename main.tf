@@ -45,12 +45,12 @@ resource "aws_instance" "webserver" {
   subnet_id = var.subnet_id
 
 
-  user_data = << EOF
-		#! /bin/bash
-        echo test >> test.txt
-        sudo yum update -y
-		sudo amazon-linux-extras install epel -y
-	EOF
+  user_data = <<EOF
+#! /bin/bash
+echo test >> test.txt
+sudo yum update -y
+sudo amazon-linux-extras install epel -y
+EOF
   
   tags = {
     Lab = join("_" , ["webserver_node_", count.index + 1])
