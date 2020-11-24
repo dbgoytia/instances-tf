@@ -50,11 +50,10 @@ resource "aws_instance" "webserver" {
   subnet_id = var.subnet_id
 
   # Bootstrap script
-  user_data = data.aws_s3_bucket_object.bootstrap_script.rendered
-
+  user_data = data.aws_s3_bucket_object.bootstrap_script.body
+  
   tags = {
     Lab = join("_" , ["webserver_node_", count.index + 1])
   }
 }
-
 
