@@ -32,3 +32,8 @@ variable "ssh-key-arn" {
     description = "ARN for the ssh-key pair"
     type = string
 }
+
+variable "bootstrapped_data" {
+  description = "Bootstrap script before running instance"
+  type = string
+}
