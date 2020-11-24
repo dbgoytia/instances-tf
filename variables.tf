@@ -33,7 +33,13 @@ variable "ssh-key-arn" {
     type = string
 }
 
-variable "bootstrapped_data" {
-  description = "Bootstrap script before running instance"
+variable "bootstrap_scripts_bucket" {
+  description = "s3 location for the bootstrap scripts"
   type = string
 }
+
+variable "bootstrap_script_key" {
+  description = "s3 keyfor the bootstrap scripts"
+  type = string
+}
+
