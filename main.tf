@@ -19,6 +19,11 @@ resource "aws_key_pair" "webserver-key" {
   public_key = data.aws_secretsmanager_secret_version.current.secret_string
 }
 
+data "aws_s3_bucket_object" "bootstrap_script" {
+  bucket = var.bootstrap_scripts_bucket
+  key    = var.bootstrap_script_key
+}
+
 # Create the instance
 resource "aws_instance" "webserver" {
 
@@ -44,6 +49,9 @@ resource "aws_instance" "webserver" {
   # Attach the subnet created in the networking module
   subnet_id = var.subnet_id
 
+  # Bootstrap script
+  user_data = data.aws_s3_bucket_object.bootstrap_script.body
+  
   tags = {
     Lab = join("_" , ["webserver_node_", count.index + 1])
   }
