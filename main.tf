@@ -51,7 +51,7 @@ resource "aws_instance" "webserver" {
 
   # Bootstrap script
   user_data = data.aws_s3_bucket_object.bootstrap_script.body
-  s
+  
   tags = {
     Lab = join("_" , ["webserver_node_", count.index + 1])
   }
