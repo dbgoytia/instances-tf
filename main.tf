@@ -53,6 +53,8 @@ resource "aws_instance" "webserver" {
 
   # Enable encription
   root_block_device = {
+      volume_type = "gp2"
+      volume_size = "10"
       encrypted   = true
   }
 
