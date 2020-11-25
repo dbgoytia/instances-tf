@@ -52,7 +52,9 @@ resource "aws_instance" "webserver" {
   user_data = data.aws_s3_bucket_object.bootstrap_script.body
 
   # Enable encription
-  encrypted = true
+  root_block_device = {
+      encrypted   = true
+  }
 
   tags = {
     Lab = join("_" , ["webserver_node_", count.index + 1])
