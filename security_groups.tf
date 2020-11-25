@@ -4,7 +4,7 @@ resource "aws_security_group" "allow_webserver" {
 
   description = "Allows traffic for webserver and ssh port"
 
-  vpc_id      = var.vpc_id
+  vpc_id = var.vpc_id
 
 
   ingress {

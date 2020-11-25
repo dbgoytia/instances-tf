@@ -4,13 +4,13 @@
 # }
 
 variable "key_pair_name" {
-   description = "Name to attach to the key_pair used for login."
-   type        = string
+  description = "Name to attach to the key_pair used for login."
+  type        = string
 }
 
 variable "servers-count" {
-    description = "The number of servers to be created."
-    type = number
+  description = "The number of servers to be created."
+  type        = number
 }
 
 variable "instance-type" {
@@ -19,27 +19,27 @@ variable "instance-type" {
 }
 
 variable "subnet_id" {
-  description = "Subnet ID to attach to our instance" 
-  type = string
+  description = "Subnet ID to attach to our instance"
+  type        = string
 }
 
 variable "vpc_id" {
   description = "VPC id used to install the security group"
-  type = string
+  type        = string
 }
 
 variable "ssh-key-arn" {
-    description = "ARN for the ssh-key pair"
-    type = string
+  description = "ARN for the ssh-key pair"
+  type        = string
 }
 
 variable "bootstrap_scripts_bucket" {
   description = "s3 location for the bootstrap scripts"
-  type = string
+  type        = string
 }
 
 variable "bootstrap_script_key" {
   description = "s3 keyfor the bootstrap scripts"
-  type = string
+  type        = string
 }
 
