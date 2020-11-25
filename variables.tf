@@ -43,3 +43,7 @@ variable "bootstrap_script_key" {
   type        = string
 }
 
+variable "monitoring" {
+  description = "ON/OFF toggle for detailed monitoring"
+  type = bool
+}

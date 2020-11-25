@@ -51,6 +51,9 @@ resource "aws_instance" "webserver" {
   # Bootstrap script
   user_data = data.aws_s3_bucket_object.bootstrap_script.body
 
+  # Enable monitoring for device (Cloudwatch)
+  monitoring = var.monitoring
+
   # Enable encription
   root_block_device {
     encrypted   = true
