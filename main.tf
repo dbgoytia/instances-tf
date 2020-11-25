@@ -42,7 +42,6 @@ resource "aws_instance" "webserver" {
   # Attach keypair to login to the instances
   key_name = aws_key_pair.webserver-key.key_name
 
-
   # Attach security group
   vpc_security_group_ids = [aws_security_group.allow_webserver.id]
 
@@ -51,7 +50,10 @@ resource "aws_instance" "webserver" {
 
   # Bootstrap script
   user_data = data.aws_s3_bucket_object.bootstrap_script.body
-  
+
+  # Enable encription
+  encrypted = true
+
   tags = {
     Lab = join("_" , ["webserver_node_", count.index + 1])
   }
