@@ -27,9 +27,6 @@ data "aws_s3_bucket_object" "bootstrap_script" {
 # Create the instance
 resource "aws_instance" "webserver" {
 
-  # Create "N" number of instances
-  count = var.servers-count
-
   # Use retrevied amazon ID.
   ami = data.aws_ssm_parameter.amazon_linux_ami.value
 
