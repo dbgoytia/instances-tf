@@ -8,7 +8,7 @@ variable "key_pair_name" {
   type        = string
 }
 
-variable "count" {
+variable "servers-count" {
   description = "The number of servers to be created."
   type        = number
 }
