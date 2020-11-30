@@ -1,6 +1,6 @@
 # Get Amazon Linux AMI image ID
 data "aws_ssm_parameter" "amazon_linux_ami" {
-  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+  name = var.ami
 }
 
 # Retrieve aws secret object
@@ -56,7 +56,7 @@ resource "aws_instance" "webserver" {
 
   # Enable encription
   root_block_device {
-    encrypted   = true
+    encrypted = true
   }
 
   tags = {

@@ -16,6 +16,7 @@ variable "servers-count" {
 variable "instance-type" {
   description = "Instance type to be used for our webserver"
   type        = string
+  default = "t2.micro"
 }
 
 variable "subnet_id" {
@@ -36,14 +37,22 @@ variable "ssh-key-arn" {
 variable "bootstrap_scripts_bucket" {
   description = "s3 location for the bootstrap scripts"
   type        = string
+  default = null
 }
 
 variable "bootstrap_script_key" {
   description = "s3 keyfor the bootstrap scripts"
   type        = string
+  default = null
 }
 
 variable "monitoring" {
   description = "ON/OFF toggle for detailed monitoring"
-  type = bool
+  type        = bool
+  default = false
+}
+
+variable "ami" {
+  description = "The AMI to be used by Systems Manager to deploy."
+  type        = string
 }
